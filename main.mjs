@@ -28,12 +28,12 @@ token = response.token;
 //get status = what you're supposed to do
 console.log(token);
 
-response = await (await fetch(statusURL,{
+response = await (await fetch(statusURL, {
     method: "GET",
     headers: {
         "Accept": "application/json",
         "Content-Type" : "application/json",
-        "Authorization" : token,
+        "Authorization" : token
     }
 })).json();
 console.log(response)
