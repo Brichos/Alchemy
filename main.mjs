@@ -52,6 +52,7 @@ console.log(await status());
 console.log(await submit(4));
 console.log(await submit("PI"));
 console.log(await submit("GoldQuicksilverSilverIronGold"))
+console.log(await submit(SILVER))
 
 
 
