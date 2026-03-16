@@ -24,27 +24,33 @@ let response =  await(await fetch(startURL, {
 
 token = response.token;
 
-
-//get status = what you're supposed to do
-console.log(token);
-
-response = await (await fetch(statusURL, {
+const status = async () => (await fetch(statusURL, {
     method: "GET",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type" : "application/json",
-        "Authorization" : token
-    }
+    headers: { "Accept": "application/json",
+         "Content-Type": "application/json", 
+         "Authorization": token }
 })).json();
-console.log(response)
 
-//Answer
-response = await(await fetch(submitURL, {
+const submit = async (answer) => (await fetch(submitURL, {
     method: "POST",
-    headers:{
-        "Authorization": token,
-        "Content-Type": "application/json"
-    },
-    body:JSON.stringify({answer:4})
+    headers: { 
+        "Authorization": token, 
+        "Content-Type": "application/json" },
+    body: JSON.stringify({ answer })
 })).json();
+
+const clue = async () => (await fetch(clueURL, {
+    method: "GET",
+    headers: { 
+        "Accept": "application/json", 
+        "Content-Type": "application/json", 
+        "Authorization": token }
+})).json();
+
+console.log(await status());
+
+console.log(await submit(4));
+console.log(await submit(PI));
+
+
 
